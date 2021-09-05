@@ -220,14 +220,12 @@ where
 
         unsafe {
             debug_assert_eq!(
-                raw_bytes.as_ptr().offset(raw_bytes.len() as isize),
-                entry_metadata
-                    .as_ptr()
-                    .offset(entry_metadata.len() as isize) as *const u8
+                raw_bytes.as_ptr().add(raw_bytes.len()),
+                entry_metadata.as_ptr().add(entry_metadata.len()) as *const u8
             );
 
             debug_assert_eq!(
-                entry_data.as_ptr().offset(entry_data.len() as isize) as *const u8,
+                entry_data.as_ptr().add(entry_data.len()) as *const u8,
                 entry_metadata.as_ptr() as *const u8
             );
         }
@@ -288,14 +286,12 @@ where
 
         unsafe {
             debug_assert_eq!(
-                raw_bytes.as_ptr().offset(raw_bytes.len() as isize),
-                entry_metadata
-                    .as_ptr()
-                    .offset(entry_metadata.len() as isize) as *const u8
+                raw_bytes.as_ptr().add(raw_bytes.len()),
+                entry_metadata.as_ptr().add(entry_metadata.len()) as *const u8
             );
 
             debug_assert_eq!(
-                entry_data.as_ptr().offset(entry_data.len() as isize) as *const u8,
+                entry_data.as_ptr().add(entry_data.len()) as *const u8,
                 entry_metadata.as_ptr() as *const u8
             );
         }

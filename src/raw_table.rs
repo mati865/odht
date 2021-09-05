@@ -129,7 +129,7 @@ impl<const GROUP_SIZE: usize> ProbeSeq<GROUP_SIZE> {
 fn group_starting_at<'a>(control_bytes: &'a [u8], index: usize) -> &'a [u8; GROUP_SIZE] {
     debug_assert!(index < control_bytes.len() - GROUP_SIZE);
     unsafe {
-        std::slice::from_raw_parts(control_bytes.as_ptr().offset(index as isize), GROUP_SIZE)
+        std::slice::from_raw_parts(control_bytes.as_ptr().add(index), GROUP_SIZE)
             .try_into()
             .unwrap()
     }
