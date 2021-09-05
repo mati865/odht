@@ -177,11 +177,9 @@ impl<C: Config> HashTableOwned<C> {
     #[inline]
     pub fn get(&self, key: &C::Key) -> Option<C::Value> {
         let encoded_key = C::encode_key(key);
-        if let Some(encoded_value) = self.as_raw().find(&encoded_key) {
-            Some(C::decode_value(encoded_value))
-        } else {
-            None
-        }
+        self.as_raw()
+            .find(&encoded_key)
+            .map(|encoded_value| C::decode_value(encoded_value))
     }
 
     #[inline]
